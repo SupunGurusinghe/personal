@@ -1,0 +1,66 @@
+servives -> networking content deli -> VPC
+1.create vpc
+2.create 2 subnets(2 diff availability zone)
+3.create interne gateway
+4.attach gateway to vpc
+5.create route table
+6.select created route table then click routes
+7.then click edit routes -> add 0.0.0.0/0 -> target 'internet gateway'-> save
+8.click subnet associations -> edit subnet associations
+-> ecplicit subnet associ. -> select 2 subnets and save
+
+9.click your vpc -> actions -> edit dns hostname -> enable
+
+10.click services -> compute -> EC2
+11. security groups -> create new
+12. Inbound rules -> add rule -> type(SSH) -> source type(My IP)
+13. Inbound rules -> add rule -> type(HTTP) -> source type(Anywhere Ipv4)
+
+14.auto scaling -> auto scling group -> create
+15. switch to launch configuration -> create launch config
+16. fill and instant type(t2.micro)
+17. additional config -> advanced details -> fill text -> ip address type(assign a public)
+18.create new key pair
+19. create auto scaling group -> next
+20. attach new load balancer -> load balancer scheme(internet-facing)
+21.listers and routing -> craete new target group
+22.next
+23.capacity -> 2,1,3 -> next -> add a tag -> create auto scaling
+
+
+
+
+
+
+ami-0cfc05f17eac80275
+
+
+
+
+
+
+
+VPC (name = <your-index-number>-vpc-1, VPC CIDR block must be 10.5.0.0/22)
+Subnet (name = <your-index-number>-subnet-1, Subnet CIDR block must be 10.5.1.0/25)
+
+
+
+
+
+
+
+
+#!/bin/bash
+sudo apt-get update -y; sudo apt-get install apache2 -y
+cd /var/www/html; sudo touch <your-index>.html
+sudo chmod 766 <your-index>.html
+echo "<company-name>-<your-index>-<your-name>" > <your-index>.html sudo service apache2 restart
+
+
+
+
+
+
+
+sudo yum install -y httpd
+
